@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anlatım demosu</title>
+  <link rel="stylesheet" href="../../assets/anlatim.css">
+  <style>
+    body { margin: 0; padding: 24px 16px; background: #F4F6FA; color: #111827; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    main { max-width: 960px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+<main>
+  <section class="yd-rehber" id="yeni-gorev">
+    <header class="yd-rehber-bas">
+      <h4>Yeni görev ekleme</h4>
+      <span>Listeden yeni görev formuna geçip kaydetmeye kadar · 3 adım</span>
+    </header>
+
+    <div class="yd-oynatici" data-anlatim data-modul="Görevler" data-ikon="✓">
+      <script type="application/json">
+      {
+        "baslik": "Yeni görev ekleme",
+        "ozet": "Listeden forma geçin, görevi doldurup kaydedin.",
+        "adimlar": [
+          {
+            "baslik": "Görev listesini açın",
+            "metin": "Tüm görevler bu ekranda listelenir. Yeni bir kayıt için sağ üstteki düğmeyi kullanın.",
+            "url": "ekran-liste.html",
+            "eylemler": [
+              { "tur": "goster", "hedef": "[data-tablo=gorevler]", "not": "Mevcut görevleriniz" },
+              { "tur": "git", "hedef": "a[href='ekran-form.html']", "not": "Yeni görev formunu açar" }
+            ]
+          },
+          {
+            "baslik": "Görevi doldurun",
+            "metin": "Başlığı yazın, önceliği seçin. Hemen ilgilenilecekse Acil kutusunu işaretleyin.",
+            "eylemler": [
+              { "tur": "yaz", "hedef": "[name=baslik]", "deger": "Haftalık raporu hazırla", "not": "Kısa ve anlaşılır bir başlık" },
+              { "tur": "sec", "hedef": "[name=oncelik]", "deger": "Yüksek" },
+              { "tur": "isaret", "hedef": "[name=acil]", "not": "Listede üstte görünür" }
+            ]
+          },
+          {
+            "baslik": "Kaydedin",
+            "metin": "Kaydet düğmesine bastığınızda görev listeye eklenir. Anlatımda düğme gerçekten tıklanmaz.",
+            "sonuc": "Görev kaydedildi.",
+            "eylemler": [
+              { "tur": "goster", "hedef": "kart:Görev Bilgileri", "not": "Bilgileri son kez kontrol edin" },
+              { "tur": "tikla", "hedef": "form button[type=submit]", "not": "Kaydet" }
+            ]
+          }
+        ]
+      }
+      </script>
+      <noscript><p style="padding:16px;color:#fff">Animasyonlu anlatım için JavaScript gereklidir; aşağıdaki yazılı adımları izleyebilirsiniz.</p></noscript>
+    </div>
+
+    <ol class="yd-adimlar">
+      <li data-adim="0">
+        <span class="yd-adim-no">1</span>
+        <div><b>Görev listesini açın</b><p>Tüm görevler bu ekranda listelenir. Yeni bir kayıt için sağ üstteki düğmeyi kullanın.</p></div>
+        <button type="button" class="yd-adim-izle" data-adim-izle="0" aria-label="1. adımı izle">▶</button>
+      </li>
+      <li data-adim="1">
+        <span class="yd-adim-no">2</span>
+        <div><b>Görevi doldurun</b><p>Başlığı yazın, önceliği seçin. Hemen ilgilenilecekse Acil kutusunu işaretleyin.</p></div>
+        <button type="button" class="yd-adim-izle" data-adim-izle="1" aria-label="2. adımı izle">▶</button>
+      </li>
+      <li data-adim="2">
+        <span class="yd-adim-no">3</span>
+        <div><b>Kaydedin</b><p>Kaydet düğmesine bastığınızda görev listeye eklenir. Anlatımda düğme gerçekten tıklanmaz.</p></div>
+        <button type="button" class="yd-adim-izle" data-adim-izle="2" aria-label="3. adımı izle">▶</button>
+      </li>
+    </ol>
+  </section>
+</main>
+<script>
+  // Örnek ayar. Tüm seçenekler: references/rehber-semasi.md
+  window.AnlatimAyar = { sayfaSecici: '[data-uygulama]' };
+</script>
+<script src="../../assets/anlatim.js"></script>
+</body>
+</html>

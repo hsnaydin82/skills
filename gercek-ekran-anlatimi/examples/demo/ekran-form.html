@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <title>Yeni görev</title>
+  <link rel="stylesheet" href="ekran.css">
+</head>
+<body data-uygulama>
+  <nav class="ust"><b>Örnek Uygulama</b><span>Yeni görev</span></nav>
+  <main>
+    <h1>Yeni görev</h1>
+    <form method="post" action="kaydet">
+      <div class="card">
+        <div class="card-title">Görev Bilgileri</div>
+        <label>Başlık <input name="baslik" autocomplete="off"></label>
+        <label>Öncelik
+          <select name="oncelik">
+            <option value="">Seçin</option>
+            <option value="1">Düşük</option>
+            <option value="2">Normal</option>
+            <option value="3">Yüksek</option>
+          </select>
+        </label>
+        <label class="kutu"><input type="checkbox" name="acil"> Acil</label>
+      </div>
+      <button type="submit" class="dugme">Kaydet</button>
+    </form>
+  </main>
+  <script>
+    // Otomatik kaydeden bir ekranı taklit eder: oynatıcının yazma engeli bu isteği durdurur.
+    document.querySelector('form').addEventListener('change', function () {
+      fetch('otomatik-kaydet', { method: 'POST', body: new FormData(this) })
+        .then(function () { window.__otomatikKayitGitti = true; })
+        .catch(function () { window.__otomatikKayitEngellendi = true; });
+    });
+  </script>
+</body>
+</html>
